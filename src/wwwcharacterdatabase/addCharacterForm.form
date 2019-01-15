@@ -28,85 +28,82 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="nameLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="nameLabel" alignment="0" pref="59" max="32767" attributes="0"/>
                           <Component id="nameField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="healthField" max="32767" attributes="0"/>
-                          <Component id="healthLabel" max="32767" attributes="0"/>
+                          <Component id="healthLabel" pref="59" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="auraField" max="32767" attributes="0"/>
-                          <Component id="auraLabel" max="32767" attributes="0"/>
+                          <Component id="auraLabel" pref="59" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="reflexField" max="32767" attributes="0"/>
-                          <Component id="reflexLabel" max="32767" attributes="0"/>
+                          <Component id="reflexLabel" pref="59" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="dadaField" max="32767" attributes="0"/>
-                          <Component id="dadaLabel" max="32767" attributes="0"/>
+                          <Component id="dadaLabel" pref="59" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="potionsField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="herbField" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="potionsLabel" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="herbLabel" min="-2" pref="69" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="potionsField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="potionsLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="162" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="herbField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="herbLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="ciLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="ciField" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ciField" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="intField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="intLabel" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
+                          <Component id="intLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="strengthField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="strengthLabel" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
+                          <Component id="strengthLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="darkField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="darkLabel" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
+                          <Component id="darkLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="muField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="muLabel" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
+                          <Component id="muLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="charismaField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="transField" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="charismaLabel" min="-2" pref="69" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="transLabel" min="-2" pref="69" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="charismaField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="charismaLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="transField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="transLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="addButton" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cancelButton" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace pref="88" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -114,46 +111,72 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="healthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="auraLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="reflexLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="dadaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="herbLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="potionsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="healthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="auraLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="reflexLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="dadaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="healthField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="auraField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="reflexField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="dadaField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="potionsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="herbLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="potionsField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="herbField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nameField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="healthField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="auraField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="reflexField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="dadaField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="herbField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="potionsField" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ciLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="intLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="strengthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="darkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="muLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ciField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="intField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="strengthField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="darkField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="muField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="charismaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="transLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="charismaField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="transField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="ciLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="intLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="strengthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="darkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="muLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="transLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="charismaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="ciField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="intField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="strengthField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="darkField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="muField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="transField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="charismaField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="337" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="addButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -161,37 +184,40 @@
   <SubComponents>
     <Component class="javax.swing.JTextField" name="nameField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameFieldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="healthField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="auraField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="reflexField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="dadaField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="herbField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="potionsField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="nameLabel">
@@ -239,15 +265,6 @@
         <Property name="text" type="java.lang.String" value="DADA"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="herbLabel">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="16" style="0"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Herb"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="potionsLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -257,6 +274,67 @@
         <Property name="text" type="java.lang.String" value="Potions"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="herbLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="16" style="0"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Herb"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="potionsField">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="herbField">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="ciField">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ciFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="intField">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="strengthField">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="darkField">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="muField">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JLabel" name="ciLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -264,16 +342,6 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="CI"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="ciField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="intField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="intLabel">
@@ -291,17 +359,7 @@
           <Font name="Tahoma" size="16" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Strength"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="strengthField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="darkField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="text" type="java.lang.String" value="Stren"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="darkLabel">
@@ -322,23 +380,13 @@
         <Property name="text" type="java.lang.String" value="MU"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="muField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="charismaField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="charismaLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="16" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Charisma"/>
+        <Property name="text" type="java.lang.String" value="Charis"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="transLabel">
@@ -350,10 +398,32 @@
         <Property name="text" type="java.lang.String" value="Trans"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JTextField" name="charismaField">
+      <Properties>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JTextField" name="transField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[59, 20]"/>
+        </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="addButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="cancelButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

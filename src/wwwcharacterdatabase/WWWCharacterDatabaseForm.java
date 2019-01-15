@@ -22,6 +22,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     Object[] columnNames = {"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI","Int", "Strength", "Darkness", "MU", "Charisma", "Trans"};
     DefaultTableModel tModel = new DefaultTableModel(columnNames, 0);
     
+    //declaration for file chooser
     FileFilter filter = new FileNameExtensionFilter("WWW file", "www");
     JFileChooser fc = new JFileChooser();
     File f;
@@ -29,6 +30,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     public WWWCharacterDatabaseForm() {
 
         initComponents();
+        fc.setFileFilter(filter);
 
     }
 

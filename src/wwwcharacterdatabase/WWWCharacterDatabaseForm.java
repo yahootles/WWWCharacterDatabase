@@ -53,7 +53,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        importItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,6 +79,11 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         });
 
         addButton.setText("Add character");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -116,8 +121,13 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
 
         fileMenu.setText("File");
 
-        jMenuItem1.setText("Open");
-        fileMenu.add(jMenuItem1);
+        importItem.setText("Import");
+        importItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(importItem);
 
         menuBar.add(fileMenu);
 
@@ -150,6 +160,14 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             f = fc.getSelectedFile();
         }
     }//GEN-LAST:event_importButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        new addCharacterForm().setVisible(true);
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void importItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importItemActionPerformed
+        importButton.doClick(0);
+    }//GEN-LAST:event_importItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,7 +210,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JButton importButton;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem importItem;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JLabel notesLabel;

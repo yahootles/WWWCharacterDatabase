@@ -19,6 +19,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     /**
      * Creates new form WWWCharacterDatabaseForm
      */
+    
+    //table variables
     Object[] columnNames = {"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI","Int", "Strength", "Darkness", "MU", "Charisma", "Trans"};
     DefaultTableModel tModel = new DefaultTableModel(columnNames, 0);
     

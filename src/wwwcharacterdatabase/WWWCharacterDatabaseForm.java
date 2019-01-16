@@ -10,6 +10,7 @@ package wwwcharacterdatabase;
  * @author antho6229
  */
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.*;
 import javax.swing.table.*;
@@ -28,6 +29,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     FileFilter filter = new FileNameExtensionFilter("WWW file", "www");
     JFileChooser fc = new JFileChooser();
     File f;
+    
+    ArrayList charList = new ArrayList(0);
 
     public WWWCharacterDatabaseForm() {
 

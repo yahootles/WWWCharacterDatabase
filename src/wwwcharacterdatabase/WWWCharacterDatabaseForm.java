@@ -20,20 +20,18 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     /**
      * Creates new form WWWCharacterDatabaseForm
      */
-    
     //table variables
-    Object[] columnNames = {"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI","Int", "Strength", "Darkness", "MU", "Charisma", "Trans"};
+    Object[] columnNames = {"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", "Int", "Strength", "Darkness", "MU", "Charisma", "Trans"};
     DefaultTableModel tModel = new DefaultTableModel(columnNames, 0);
-    
+
     //declaration for file chooser
     FileFilter filter = new FileNameExtensionFilter("WWW file", "www");
     JFileChooser fc = new JFileChooser();
     File f;
-    
-    ArrayList charList = new ArrayList(0);
+
+    public static ArrayList<Character> charList = new ArrayList<Character>();
 
     public WWWCharacterDatabaseForm() {
-
         initComponents();
         fc.setFileFilter(filter);
 
@@ -160,8 +158,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
 
     private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
         int num = fc.showOpenDialog(mainPanel);
-        
-        if(num == fc.APPROVE_OPTION){
+
+        if (num == fc.APPROVE_OPTION) {
             f = fc.getSelectedFile();
         }
     }//GEN-LAST:event_importButtonActionPerformed
@@ -178,6 +176,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        ArrayList charList2 = new ArrayList(0);
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -207,6 +207,10 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                 new WWWCharacterDatabaseForm().setVisible(true);
             }
         });
+    }
+
+    public static void addToCharList(Character charac){
+        charList.add(charac);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

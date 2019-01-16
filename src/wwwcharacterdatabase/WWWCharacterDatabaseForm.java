@@ -21,15 +21,15 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
      * Creates new form WWWCharacterDatabaseForm
      */
     //table variables
-    Object[] columnNames = {"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", "Int", "Strength", "Darkness", "MU", "Charisma", "Trans"};
-    
+    static Object[] columnNames = {"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", "Int", "Strength", "Darkness", "MU", "Charisma", "Trans"};
+    static DefaultTableModel tModel = new DefaultTableModel(columnNames, 0);
 
     //declaration for file chooser
     FileFilter filter = new FileNameExtensionFilter("WWW file", "www");
     JFileChooser fc = new JFileChooser();
     File f;
     
-    DefaultTableModel tModel = new DefaultTableModel(columnNames, 0);
+
 
     public static ArrayList<Character> charList = new ArrayList<Character>();
 
@@ -216,10 +216,29 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
      */
     public static void addToCharList(Character charac){
         charList.add(charac);
+        addToTable(charac);
     }
     
     public static void addToTable(Character charac){
-        tModel.addRow(rowData);
+        //{"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", 
+        //"Int", "Strength", "Darkness", "MU", "Charisma", "Trans"
+        String[] data = new String[14];
+        data[0] = charac.name;
+        data[1] = Integer.toString(charac.health);
+        data[2] = Integer.toString(charac.aura); 
+        data[3] = Integer.toString(charac.reflex);
+        data[4] = Integer.toString(charac.dada);
+        data[5] = Integer.toString(charac.potions);
+        data[6] = Integer.toString(charac.herb);
+        data[7] = Integer.toString(charac.ci);
+        data[8] = Integer.toString(charac.intel);
+        data[9] = Integer.toString(charac.stren);
+        data[10] = Integer.toString(charac.dark);
+        data[11] = Integer.toString(charac.mu);
+        data[12] = Integer.toString(charac.charis);
+        data[13] = Integer.toString(charac.trans);
+        tModel.addRow(data);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;

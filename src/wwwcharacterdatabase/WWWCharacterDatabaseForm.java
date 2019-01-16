@@ -219,8 +219,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     }
     
     public static void addToTable(Character charac){
-        //tModel
-    }
+        tModel.addRow(rowData);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;

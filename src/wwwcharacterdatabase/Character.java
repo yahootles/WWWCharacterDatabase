@@ -29,8 +29,21 @@ public class Character {
     int charis;
     int trans;
 
-    public Character(String name) {
-        this.name = name;
+    public Character(String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, int dar, int m, int ch, int t) {
+        name = n;
+        health = heal;
+        aura = a;
+        reflex = r;
+        dada = d;
+        potions = p;
+        herb = h;
+        ci = c;
+        intel = i;
+        stren = s;
+        dark = dar;
+        mu = m;
+        charis = ch;
+        trans = t;
     }
 
     public void setHealth(int h) {

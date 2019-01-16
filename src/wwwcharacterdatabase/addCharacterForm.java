@@ -322,7 +322,8 @@ public class addCharacterForm extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         try{
-            String name = nameField.getText();
+            //get all the values frm the text fields
+            String charName = nameField.getText();
             int aura = Integer.parseInt(auraField.getText());
             int charisma = Integer.parseInt(charismaField.getText());
             int ci = Integer.parseInt(ciField.getText());
@@ -337,11 +338,17 @@ public class addCharacterForm extends javax.swing.JFrame {
             int strength = Integer.parseInt(strengthField.getText());
             int trans = Integer.parseInt(transField.getText());
             
-            errorLabel.setText("");
+            //make a new Character wih those values and add it to the arralist 
+            WWWCharacterDatabaseForm.addToCharList(new Character(charName, health, aura, reflex, dada, potions, herb, ci, intel, strength, dark, mu, charisma, trans));
+
+            //mak this window invisible
+            this.setVisible(false);
         }catch(NumberFormatException nfe){
             System.err.println("Exception:" + nfe);
             errorLabel.setText("Invalid input. Something is not a number.");
         }
+        
+        
         
         //WWWCharacterDatabaseForm.charList.add(new Character());
     }//GEN-LAST:event_addButtonActionPerformed

@@ -22,19 +22,20 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
      */
     //table variables
     Object[] columnNames = {"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", "Int", "Strength", "Darkness", "MU", "Charisma", "Trans"};
-    DefaultTableModel tModel = new DefaultTableModel(columnNames, 0);
+    
 
     //declaration for file chooser
     FileFilter filter = new FileNameExtensionFilter("WWW file", "www");
     JFileChooser fc = new JFileChooser();
     File f;
+    
+    DefaultTableModel tModel = new DefaultTableModel(columnNames, 0);
 
     public static ArrayList<Character> charList = new ArrayList<Character>();
 
     public WWWCharacterDatabaseForm() {
         initComponents();
         fc.setFileFilter(filter);
-
     }
 
     /**
@@ -208,9 +209,17 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    /**
+     * Method that adds a Character to an ArrayList and class the method to add it to the table
+     * @param charac - Character being added to he ArrayList 
+     */
     public static void addToCharList(Character charac){
         charList.add(charac);
+    }
+    
+    public static void addToTable(Character charac){
+        //tModel
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

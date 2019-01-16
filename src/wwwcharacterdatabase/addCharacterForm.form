@@ -26,84 +26,93 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="nameLabel" alignment="0" pref="59" max="32767" attributes="0"/>
-                          <Component id="nameField" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="healthField" max="32767" attributes="0"/>
-                          <Component id="healthLabel" pref="59" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="auraField" max="32767" attributes="0"/>
-                          <Component id="auraLabel" pref="59" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="reflexField" max="32767" attributes="0"/>
-                          <Component id="reflexLabel" pref="59" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="dadaField" max="32767" attributes="0"/>
-                          <Component id="dadaLabel" pref="59" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="potionsField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="potionsLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="herbField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="herbLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="ciLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="ciField" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="addButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cancelButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="intField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="intLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="strengthField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="strengthLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="darkField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="darkLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="muField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="muLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="charismaField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="charismaLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="transField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="transLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="errorLabel" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="addButton" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cancelButton" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="nameLabel" alignment="0" pref="59" max="32767" attributes="0"/>
+                                  <Component id="nameField" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="healthField" max="32767" attributes="0"/>
+                                  <Component id="healthLabel" pref="59" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="auraField" max="32767" attributes="0"/>
+                                  <Component id="auraLabel" pref="59" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="reflexField" max="32767" attributes="0"/>
+                                  <Component id="reflexLabel" pref="59" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="dadaField" max="32767" attributes="0"/>
+                                  <Component id="dadaLabel" pref="59" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="potionsField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="potionsLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="herbField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="herbLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="ciLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="ciField" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="intField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="intLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="strengthField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="strengthLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="darkField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="darkLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="muField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="muLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="charismaField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="charismaLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="transField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="transLabel" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="76" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="88" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -173,7 +182,10 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Component id="addButton" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="errorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="26" max="32767" attributes="0"/>
@@ -427,6 +439,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="errorLabel">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

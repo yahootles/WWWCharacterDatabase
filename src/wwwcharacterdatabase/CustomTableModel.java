@@ -14,9 +14,19 @@ import javax.swing.table.*;
 
 public class CustomTableModel extends DefaultTableModel {
     
+    int numCols;
+    
+    CustomTableModel(Object[] columnNames, int rowCount){
+        super(columnNames, rowCount);
+        numCols = columnNames.length;
+    }
+    
+    @Override
+    
+    /**
+     * 
+     */
     public boolean isCellEditable(int row, int col){
         return false;
     }
-    
-    
 }

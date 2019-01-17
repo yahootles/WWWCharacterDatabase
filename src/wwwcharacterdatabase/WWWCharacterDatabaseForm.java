@@ -21,8 +21,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
      * Creates new form WWWCharacterDatabaseForm
      */
     //table variables
-    static Object[] columnNames = {"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", "Int", "Strength", "Darkness", "MU", "Charisma", "Trans"};
-    static DefaultTableModel tModel = new DefaultTableModel(columnNames, 0);
+    static Object[] columnNames = {"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", "Int", "Strength", "Dark", "MU", "Charis", "Trans"};
+    static CustomTableModel tModel = new CustomTableModel(columnNames, 0);
 
     //declaration for file chooser
     FileFilter filter = new FileNameExtensionFilter("WWW file", "www");
@@ -35,6 +35,12 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
 
     public WWWCharacterDatabaseForm() {
         initComponents();
+        
+        //change width of first column
+        TableColumnModel tcm = charTable.getColumnModel();
+        tcm.getColumn(0).setPreferredWidth(180);
+        
+        //set the filter
         fc.setFileFilter(filter);
     }
 
@@ -55,6 +61,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         notesLabel = new javax.swing.JLabel();
         importButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         importItem = new javax.swing.JMenuItem();
@@ -89,6 +96,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             }
         });
 
+        editButton.setText("Edit");
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -97,26 +106,37 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(tablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(tablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(97, 97, 97))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(890, 890, 890)))
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(notesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                             .addComponent(notesPane)))
                     .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(importButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(importButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                        .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(importButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(notesLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addContainerGap(106, Short.MAX_VALUE)
+                        .addComponent(notesLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(importButton)
+                        .addGap(11, 11, 11)
+                        .addComponent(addButton)
+                        .addGap(11, 11, 11)
+                        .addComponent(editButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(notesPane)
                     .addComponent(tablePane, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE))
@@ -166,7 +186,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     }//GEN-LAST:event_importButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        new addCharacterForm().setVisible(true);
+        new addCharacterForm(0).setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void importItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importItemActionPerformed
@@ -243,6 +263,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JTable charTable;
+    private javax.swing.JButton editButton;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JButton importButton;

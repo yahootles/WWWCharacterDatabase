@@ -17,6 +17,17 @@ public class addCharacterForm extends javax.swing.JFrame {
     public addCharacterForm() {
         initComponents();
     }
+    
+    public addCharacterForm(int state, String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, int dar, int m, int ch, int t){
+        initComponents();
+        if(state == 1){
+            addButton.setVisible(false);
+            cancelButton.setVisible(false);
+        }else{
+            editButton.setVisible(false);
+            cancelButton2.setVisible(false);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,8 +69,10 @@ public class addCharacterForm extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         errorLabel = new javax.swing.JLabel();
+        editButton = new javax.swing.JButton();
+        cancelButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         nameField.setMinimumSize(new java.awt.Dimension(59, 20));
         nameField.addActionListener(new java.awt.event.ActionListener() {
@@ -171,6 +184,20 @@ public class addCharacterForm extends javax.swing.JFrame {
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
+        editButton.setText("Edit");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
+
+        cancelButton2.setText("Cancel");
+        cancelButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,6 +210,10 @@ public class addCharacterForm extends javax.swing.JFrame {
                             .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cancelButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(editButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cancelButton2, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,11 +328,17 @@ public class addCharacterForm extends javax.swing.JFrame {
                             .addComponent(charismaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(transField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton)
-                    .addComponent(errorLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cancelButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addButton)
+                            .addComponent(errorLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancelButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(editButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancelButton2)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -317,7 +354,7 @@ public class addCharacterForm extends javax.swing.JFrame {
     }//GEN-LAST:event_ciFieldActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
@@ -338,11 +375,11 @@ public class addCharacterForm extends javax.swing.JFrame {
             int strength = Integer.parseInt(strengthField.getText());
             int trans = Integer.parseInt(transField.getText());
             
-            //make a new Character wih those values and add it to the arralist 
+            //make a new Character wih those values and add it to the arraylist 
             WWWCharacterDatabaseForm.addToCharList(new Character(charName, health, aura, reflex, dada, potions, herb, ci, intel, strength, dark, mu, charisma, trans));
 
-            //mak this window invisible
-            this.setVisible(false);
+            //disposes of this window
+            this.dispose();
         }catch(NumberFormatException nfe){
             System.err.println("Exception:" + nfe);
             errorLabel.setText("Invalid input. Something is not a number.");
@@ -352,6 +389,14 @@ public class addCharacterForm extends javax.swing.JFrame {
         
         //WWWCharacterDatabaseForm.charList.add(new Character());
     }//GEN-LAST:event_addButtonActionPerformed
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editButtonActionPerformed
+
+    private void cancelButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,6 +438,7 @@ public class addCharacterForm extends javax.swing.JFrame {
     private javax.swing.JTextField auraField;
     private javax.swing.JLabel auraLabel;
     private javax.swing.JButton cancelButton;
+    private javax.swing.JButton cancelButton2;
     private javax.swing.JTextField charismaField;
     private javax.swing.JLabel charismaLabel;
     private javax.swing.JTextField ciField;
@@ -401,6 +447,7 @@ public class addCharacterForm extends javax.swing.JFrame {
     private javax.swing.JLabel dadaLabel;
     private javax.swing.JTextField darkField;
     private javax.swing.JLabel darkLabel;
+    private javax.swing.JButton editButton;
     private javax.swing.JLabel errorLabel;
     private javax.swing.JTextField healthField;
     private javax.swing.JLabel healthLabel;

@@ -26,6 +26,10 @@ public class addCharacterForm extends javax.swing.JFrame {
         
         //check if it is to edit or add
         if(state == 1){
+            //make some buttons invisible
+            addButton.setVisible(false);
+            cancelButton.setVisible(false);
+            
             //set the fields to existing values
             nameField.setText(n);
             auraField.setText("" + a);
@@ -396,7 +400,7 @@ public class addCharacterForm extends javax.swing.JFrame {
             int trans = Integer.parseInt(transField.getText());
             
             //make a new Character wih those values and add it to the arraylist 
-            WWWCharacterDatabaseForm.addToCharList(new Character(charName, health, aura, reflex, dada, potions, herb, ci, intel, strength, dark, mu, charisma, trans));
+            WWWCharacterDatabaseForm.addToCharList(new Character(charName, health, aura, reflex, dada, potions, herb, ci, intel, strength, dark, mu, charisma, trans), -1);
 
             //disposes of this window
             this.dispose();
@@ -411,7 +415,32 @@ public class addCharacterForm extends javax.swing.JFrame {
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        // TODO add your handling code here:
+        try{
+            //get all the values frm the text fields
+            String charName = nameField.getText();
+            int aura = Integer.parseInt(auraField.getText());
+            int charisma = Integer.parseInt(charismaField.getText());
+            int ci = Integer.parseInt(ciField.getText());
+            int dada = Integer.parseInt(dadaField.getText());
+            int dark = Integer.parseInt(darkField.getText());
+            int health = Integer.parseInt(healthField.getText());
+            int herb = Integer.parseInt(herbField.getText());
+            int intel = Integer.parseInt(intField.getText());
+            int mu = Integer.parseInt(muField.getText());
+            int potions = Integer.parseInt(potionsField.getText());
+            int reflex = Integer.parseInt(reflexField.getText());
+            int strength = Integer.parseInt(strengthField.getText());
+            int trans = Integer.parseInt(transField.getText());
+            
+            //make a new Character wih those values and add it to the arraylist 
+            WWWCharacterDatabaseForm.addToCharList(new Character(charName, health, aura, reflex, dada, potions, herb, ci, intel, strength, dark, mu, charisma, trans), index);
+
+            //disposes of this window
+            this.dispose();
+        }catch(NumberFormatException nfe){
+            System.err.println("Exception:" + nfe);
+            errorLabel.setText("Invalid input. Something is not a number.");
+        }
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void cancelButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButton2ActionPerformed

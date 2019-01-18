@@ -46,6 +46,10 @@ public class Character {
         trans = t;
     }
 
+    public void setName(String n) {
+        name = n;
+    }
+    
     public void setHealth(int h) {
         health = h;
     }

@@ -28,18 +28,16 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     FileFilter filter = new FileNameExtensionFilter("WWW file", "www");
     JFileChooser fc = new JFileChooser();
     File f;
-    
-
 
     public static ArrayList<Character> charList = new ArrayList<Character>();
 
     public WWWCharacterDatabaseForm() {
         initComponents();
-        
+
         //change width of first column
         TableColumnModel tcm = charTable.getColumnModel();
         tcm.getColumn(0).setPreferredWidth(180);
-        
+
         //set the filter
         fc.setFileFilter(filter);
     }
@@ -191,7 +189,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     }//GEN-LAST:event_importButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        new addCharacterForm(0,0,"",0,0,0,0,0,0,0,0,0,0,0,0,0).setVisible(true);
+        new addCharacterForm(0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0).setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void importItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importItemActionPerformed
@@ -200,12 +198,14 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         //(int state, String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, int dar, int m, int ch, int t)
-        int index = charTable.getSelectedRow();
-        Character tempChar = charList.get(index);
-        System.out.println(tempChar.toString() + index);
-        System.out.println("yay");
+        int row = charTable.getSelectedRow();
+        System.out.println(String.valueOf(row));
+        Character tempChar = charList.get(row);
+        System.out.println(tempChar.toString() + row);
+        //System.out.println("yay");
         String n = tempChar.name;
         int heal = tempChar.health;
+        //System.out.println(n);
         int a = tempChar.aura;
         int r = tempChar.reflex;
         int d = tempChar.dada;
@@ -218,9 +218,9 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         int m = tempChar.mu;
         int ch = tempChar.charis;
         int t = tempChar.trans;
-        new addCharacterForm(1, index, n, heal, a, r, d, p, h, c, i, s, dar, m, ch, t).setVisible(true);
-        System.out.println("yay2");
-        
+        new addCharacterForm(1, row, n, heal, a, r, d, p, h, c, i, s, dar, m, ch, t).setVisible(true);
+        //System.out.println("yay2");
+
     }//GEN-LAST:event_editButtonActionPerformed
 
     /**
@@ -228,7 +228,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         ArrayList charList2 = new ArrayList(0);
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -259,23 +259,45 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             }
         });
     }
-    
+
     /**
-     * Method that adds a Character to an ArrayList and class the method to add it to the table
-     * @param charac - Character being added to he ArrayList 
+     * Method that adds a Character to an ArrayList and class the method to add
+     * it to the table
+     *
+     * @param charac - Character being added to he ArrayList
      */
-    public static void addToCharList(Character charac){
-        charList.add(charac);
-        addToTable(charac);
+    public static void addToCharList(Character charac, int index) {
+
+        if (index < 0) {
+            charList.add(charac);
+            addToTable(charac, index);
+        }else{
+            charList.get(index).setAura(charac.aura);
+            charList.get(index).setCI(charac.ci);
+            charList.get(index).setCharis(charac.charis);
+            charList.get(index).setDADA(charac.dada);
+            charList.get(index).setDark(charac.dark);
+            charList.get(index).setHealth(charac.health);
+            charList.get(index).setHerb(charac.herb);
+            charList.get(index).setIntel(charac.intel);
+            charList.get(index).setMU(charac.mu);
+            charList.get(index).setName(charac.name);
+            charList.get(index).setPotions(charac.potions);
+            charList.get(index).setReflex(charac.reflex);
+            charList.get(index).setStren(charac.stren);
+            charList.get(index).setTrans(charac.trans);
+                   
+            addToTable(charac, index);
+        }
     }
-    
-    public static void addToTable(Character charac){
+
+    public static void addToTable(Character charac, int index) {
         //{"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", 
         //"Int", "Strength", "Darkness", "MU", "Charisma", "Trans"
         String[] data = new String[14];
         data[0] = charac.name;
         data[1] = Integer.toString(charac.health);
-        data[2] = Integer.toString(charac.aura); 
+        data[2] = Integer.toString(charac.aura);
         data[3] = Integer.toString(charac.reflex);
         data[4] = Integer.toString(charac.dada);
         data[5] = Integer.toString(charac.potions);
@@ -287,7 +309,14 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         data[11] = Integer.toString(charac.mu);
         data[12] = Integer.toString(charac.charis);
         data[13] = Integer.toString(charac.trans);
-        tModel.addRow(data);
+        
+        if(index < 0){
+            tModel.addRow(data);
+        }else{
+            for(int i = 0; i < data.length; i++){
+                tModel.setValueAt(data[i], index, i);
+            }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

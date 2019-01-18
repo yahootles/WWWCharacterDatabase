@@ -14,19 +14,39 @@ public class addCharacterForm extends javax.swing.JFrame {
     /**
      * Creates new form addCharacterForm
      */
+    
+    int index;
+    
     public addCharacterForm() {
         initComponents();
     }
     
-    public addCharacterForm(int state, String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, int dar, int m, int ch, int t){
+    public addCharacterForm(int state, int in, String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, int dar, int m, int ch, int t){
         initComponents();
+        
+        //check if it is to edit or add
         if(state == 1){
-            addButton.setVisible(false);
-            cancelButton.setVisible(false);
+            //set the fields to existing values
+            nameField.setText(n);
+            auraField.setText("" + a);
+            healthField.setText("" + heal);
+            reflexField.setText("" + r);
+            dadaField.setText("" + d);
+            potionsField.setText("" + p);
+            herbField.setText("" + h);
+            ciField.setText("" + c);
+            intField.setText("" + i);
+            strengthField.setText("" + s);
+            darkField.setText("" + dar);
+            muField.setText("" + m);
+            charismaField.setText("" + ch);
+            transField.setText("" + t);  
+            index = in;
         }else{
             editButton.setVisible(false);
             cancelButton2.setVisible(false);
         }
+        
     }
 
     /**

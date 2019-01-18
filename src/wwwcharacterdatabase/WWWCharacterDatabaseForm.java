@@ -97,6 +97,11 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         });
 
         editButton.setText("Edit");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -117,7 +122,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                             .addComponent(notesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                             .addComponent(notesPane)))
                     .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(importButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                        .addComponent(importButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, Short.MAX_VALUE)
                         .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
@@ -186,12 +191,37 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     }//GEN-LAST:event_importButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        new addCharacterForm(0).setVisible(true);
+        new addCharacterForm(0,0,"",0,0,0,0,0,0,0,0,0,0,0,0,0).setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void importItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importItemActionPerformed
         importButton.doClick(0);
     }//GEN-LAST:event_importItemActionPerformed
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        //(int state, String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, int dar, int m, int ch, int t)
+        int index = charTable.getSelectedRow();
+        Character tempChar = charList.get(index);
+        System.out.println(tempChar.toString() + index);
+        System.out.println("yay");
+        String n = tempChar.name;
+        int heal = tempChar.health;
+        int a = tempChar.aura;
+        int r = tempChar.reflex;
+        int d = tempChar.dada;
+        int p = tempChar.potions;
+        int h = tempChar.herb;
+        int c = tempChar.ci;
+        int i = tempChar.intel;
+        int s = tempChar.stren;
+        int dar = tempChar.dark;
+        int m = tempChar.mu;
+        int ch = tempChar.charis;
+        int t = tempChar.trans;
+        new addCharacterForm(1, index, n, heal, a, r, d, p, h, c, i, s, dar, m, ch, t).setVisible(true);
+        System.out.println("yay2");
+        
+    }//GEN-LAST:event_editButtonActionPerformed
 
     /**
      * @param args the command line arguments

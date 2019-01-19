@@ -12,6 +12,9 @@ package wwwcharacterdatabase;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import static javax.swing.ListSelectionModel.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.*;
 import javax.swing.table.*;
 
@@ -23,6 +26,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     //table variables
     static Object[] columnNames = {"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", "Int", "Strength", "Dark", "MU", "Charis", "Trans"};
     static CustomTableModel tModel = new CustomTableModel(columnNames, 0);
+    int prevSelected;
 
     //declaration for file chooser
     FileFilter filter = new FileNameExtensionFilter("WWW file", "www");
@@ -37,6 +41,13 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         //change width of first column
         TableColumnModel tcm = charTable.getColumnModel();
         tcm.getColumn(0).setPreferredWidth(180);
+
+        charTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                selectionChanged();
+            }
+        });
 
         //set the filter
         fc.setFileFilter(filter);
@@ -72,6 +83,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         charTable.setBackground(new java.awt.Color(214, 217, 223));
         charTable.setModel(this.tModel);
         charTable.setGridColor(new java.awt.Color(255, 255, 255));
+        charTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        charTable.setShowVerticalLines(false);
         tablePane.setViewportView(charTable);
 
         notesPane.setViewportView(notesTextArea);
@@ -224,10 +237,24 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     }//GEN-LAST:event_editButtonActionPerformed
 
     /**
+     * Method that gets called every time a new row is selected. It saves the notes and displays the notes of the newly selected character
+     */
+    private void selectionChanged() {
+                int curSelected = charTable.getSelectedRow();
+                
+                charList.get(prevSelected).notes = notesTextArea.getText();
+                notesTextArea.setText(charList.get(curSelected).notes);
+                prevSelected = curSelected;      
+    }
+
+    private void saveNotes() {
+
+    }
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        ArrayList charList2 = new ArrayList(0);
 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -271,7 +298,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         if (index < 0) {
             charList.add(charac);
             addToTable(charac, index);
-        }else{
+        } else {
             charList.get(index).setAura(charac.aura);
             charList.get(index).setCI(charac.ci);
             charList.get(index).setCharis(charac.charis);
@@ -286,7 +313,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             charList.get(index).setReflex(charac.reflex);
             charList.get(index).setStren(charac.stren);
             charList.get(index).setTrans(charac.trans);
-                   
+
             addToTable(charac, index);
         }
     }
@@ -309,11 +336,11 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         data[11] = Integer.toString(charac.mu);
         data[12] = Integer.toString(charac.charis);
         data[13] = Integer.toString(charac.trans);
-        
-        if(index < 0){
+
+        if (index < 0) {
             tModel.addRow(data);
-        }else{
-            for(int i = 0; i < data.length; i++){
+        } else {
+            for (int i = 0; i < data.length; i++) {
                 tModel.setValueAt(data[i], index, i);
             }
         }

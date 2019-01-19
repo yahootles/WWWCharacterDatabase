@@ -15,6 +15,7 @@ public class Character {
 
     //variables
     String name;
+    String notes;
     int health;
     int aura;
     int reflex;
@@ -44,6 +45,7 @@ public class Character {
         mu = m;
         charis = ch;
         trans = t;
+        notes = "";
     }
 
     public void setName(String n) {

@@ -9,7 +9,8 @@ package wwwcharacterdatabase;
  *
  * @author antho6229
  */
-import java.io.File;
+
+import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import static javax.swing.ListSelectionModel.*;
@@ -29,7 +30,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     int prevSelected;
 
     //declaration for file chooser
-    FileFilter filter = new FileNameExtensionFilter("WWW file", "www");
+    javax.swing.filechooser.FileFilter filter = new FileNameExtensionFilter("WWW file", "www");
     JFileChooser fc = new JFileChooser();
     File f;
 
@@ -293,6 +294,12 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
      *
      * @param charac - Character being added to he ArrayList
      */
+    
+    /**
+     * Method that adds Characters to the list or replaces an already added Character's values
+     * @param charac - The Character being added
+     * @param index  - The index at which to replace the values of that character
+     */
     public static void addToCharList(Character charac, int index) {
 
         if (index < 0) {
@@ -318,6 +325,11 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Method that adds new Characters or updates current Characters in the table
+     * @param charac - Character being added to the table
+     * @param index  - index of the Character being updated(if it is being updated)
+     */
     public static void addToTable(Character charac, int index) {
         //{"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", 
         //"Int", "Strength", "Darkness", "MU", "Charisma", "Trans"
@@ -344,6 +356,10 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                 tModel.setValueAt(data[i], index, i);
             }
         }
+    }
+    
+    public static void saveDatabase(){
+        //FileWriter 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

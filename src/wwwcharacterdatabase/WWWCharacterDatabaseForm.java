@@ -12,6 +12,8 @@ package wwwcharacterdatabase;
 import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane.*;
+import javax.swing.JOptionPane;
 import static javax.swing.ListSelectionModel.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -26,7 +28,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     //table variables
     static Object[] columnNames = {"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", "Int", "Strength", "Dark", "MU", "Charis", "Trans"};
     static CustomTableModel tModel = new CustomTableModel(columnNames, 0);
-    int prevSelected;
+    int prevSelected = -1;
 
     //declaration for file chooser
     javax.swing.filechooser.FileFilter filter = new FileNameExtensionFilter("WWW file", "www");
@@ -73,6 +75,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         importButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         importItem = new javax.swing.JMenuItem();
@@ -101,6 +104,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         notesLabel.setText("Notes");
 
         importButton.setText("Import from file");
+        importButton.setMaximumSize(new java.awt.Dimension(127, 25));
+        importButton.setMinimumSize(new java.awt.Dimension(127, 25));
         importButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 importButtonActionPerformed(evt);
@@ -108,16 +113,27 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         });
 
         addButton.setText("Add character");
+        addButton.setMaximumSize(new java.awt.Dimension(127, 25));
+        addButton.setMinimumSize(new java.awt.Dimension(127, 25));
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
             }
         });
 
-        editButton.setText("Edit");
+        editButton.setText("Edit character");
+        editButton.setMaximumSize(new java.awt.Dimension(127, 25));
+        editButton.setMinimumSize(new java.awt.Dimension(127, 25));
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editButtonActionPerformed(evt);
+            }
+        });
+
+        deleteButton.setText("Delete character");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
             }
         });
 
@@ -128,42 +144,43 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(tablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(97, 97, 97))
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(890, 890, 890)))
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(notesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                            .addComponent(notesPane)))
+                    .addComponent(tablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(importButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, Short.MAX_VALUE)
-                        .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(importButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(notesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(notesPane, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(46, Short.MAX_VALUE))))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addContainerGap(106, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addComponent(notesLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(importButton)
-                        .addGap(11, 11, 11)
-                        .addComponent(addButton)
-                        .addGap(11, 11, 11)
-                        .addComponent(editButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(notesPane)
-                    .addComponent(tablePane, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE))
-                .addGap(110, 110, 110))
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(deleteButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(notesPane, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(81, 81, 81))
         );
 
         fileMenu.setText("File");
@@ -187,10 +204,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,21 +214,13 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
-        int num = fc.showOpenDialog(mainPanel);
-
-        if (num == fc.APPROVE_OPTION) {
-            f = fc.getSelectedFile();
-        }
-    }//GEN-LAST:event_importButtonActionPerformed
-
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        new addCharacterForm(0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0).setVisible(true);
-    }//GEN-LAST:event_addButtonActionPerformed
-
     private void importItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importItemActionPerformed
         importButton.doClick(0);
     }//GEN-LAST:event_importItemActionPerformed
+
+    private void closingHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closingHandler
+        saveDatabase();
+    }//GEN-LAST:event_closingHandler
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         //(int state, String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, int dar, int m, int ch, int t)
@@ -240,12 +246,23 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         int t = tempChar.trans;
         new addCharacterForm(1, row, n, heal, a, r, d, p, h, c, i, s, dar, m, ch, t).setVisible(true);
         //System.out.println("yay2");
-
     }//GEN-LAST:event_editButtonActionPerformed
 
-    private void closingHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closingHandler
-        saveDatabase();
-    }//GEN-LAST:event_closingHandler
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        new addCharacterForm(0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0).setVisible(true);
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
+        int num = fc.showOpenDialog(mainPanel);
+
+        if (num == fc.APPROVE_OPTION) {
+            f = fc.getSelectedFile();
+        }
+    }//GEN-LAST:event_importButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * Method that gets called every time a new row is selected. It saves the
@@ -254,9 +271,14 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     private void selectionChanged() {
         int curSelected = charTable.getSelectedRow();
 
-        charList.get(prevSelected).notes = notesTextArea.getText();
-        notesTextArea.setText(charList.get(curSelected).notes);
-        prevSelected = curSelected;
+        if (prevSelected >= 0) {
+            charList.get(prevSelected).notes = notesTextArea.getText();
+            notesTextArea.setText(charList.get(curSelected).notes);
+            prevSelected = curSelected;
+        } else {
+            notesTextArea.setText(charList.get(curSelected).notes);
+            prevSelected = curSelected;
+        }
     }
 
     private void saveNotes() {
@@ -376,7 +398,11 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     /**
      * Method that saves the database into a .dat file by serializing an array
      */
-    public static void saveDatabase() {
+    public void saveDatabase() {
+        if (charTable.getSelectedRow() >= 0) {
+            charList.get(charTable.getSelectedRow()).notes = notesTextArea.getText();
+        }
+
         try {
             //set up outpu streams
             FileOutputStream fileOut = new FileOutputStream("data.dat", false);
@@ -395,7 +421,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
 
             //write the array to the file
             obOut.writeObject(tempArray);
-            
+
             //flush and close outputs
             obOut.flush();
             obOut.close();
@@ -446,6 +472,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JTable charTable;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;

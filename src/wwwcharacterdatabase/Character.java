@@ -11,7 +11,7 @@ package wwwcharacterdatabase;
  */
 //"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI","Int", "Strength", 
 //"Darkness", "MU", "Charisma", "Trans"
-public class Character {
+public class Character implements java.io.Serializable{
 
     //variables
     String name;

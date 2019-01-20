@@ -9,7 +9,6 @@ package wwwcharacterdatabase;
  *
  * @author antho6229
  */
-
 import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
@@ -50,6 +49,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             }
         });
 
+        loadDatabase();
+
         //set the filter
         fc.setFileFilter(filter);
     }
@@ -77,7 +78,12 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         importItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                closingHandler(evt);
+            }
+        });
 
         mainPanel.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -237,15 +243,20 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_editButtonActionPerformed
 
+    private void closingHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closingHandler
+        saveDatabase();
+    }//GEN-LAST:event_closingHandler
+
     /**
-     * Method that gets called every time a new row is selected. It saves the notes and displays the notes of the newly selected character
+     * Method that gets called every time a new row is selected. It saves the
+     * notes and displays the notes of the newly selected character
      */
     private void selectionChanged() {
-                int curSelected = charTable.getSelectedRow();
-                
-                charList.get(prevSelected).notes = notesTextArea.getText();
-                notesTextArea.setText(charList.get(curSelected).notes);
-                prevSelected = curSelected;      
+        int curSelected = charTable.getSelectedRow();
+
+        charList.get(prevSelected).notes = notesTextArea.getText();
+        notesTextArea.setText(charList.get(curSelected).notes);
+        prevSelected = curSelected;
     }
 
     private void saveNotes() {
@@ -294,11 +305,12 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
      *
      * @param charac - Character being added to he ArrayList
      */
-    
     /**
-     * Method that adds Characters to the list or replaces an already added Character's values
+     * Method that adds Characters to the list or replaces an already added
+     * Character's values
+     *
      * @param charac - The Character being added
-     * @param index  - The index at which to replace the values of that character
+     * @param index - The index at which to replace the values of that character
      */
     public static void addToCharList(Character charac, int index) {
 
@@ -326,9 +338,12 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     }
 
     /**
-     * Method that adds new Characters or updates current Characters in the table
+     * Method that adds new Characters or updates current Characters in the
+     * table
+     *
      * @param charac - Character being added to the table
-     * @param index  - index of the Character being updated(if it is being updated)
+     * @param index - index of the Character being updated(if it is being
+     * updated)
      */
     public static void addToTable(Character charac, int index) {
         //{"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", 
@@ -357,9 +372,75 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             }
         }
     }
-    
-    public static void saveDatabase(){
-        //FileWriter 
+
+    /**
+     * Method that saves the database into a .dat file by serializing an array
+     */
+    public static void saveDatabase() {
+        try {
+            //set up outpu streams
+            FileOutputStream fileOut = new FileOutputStream("data.dat", false);
+            ObjectOutputStream obOut = new ObjectOutputStream(fileOut);
+
+            //get number of Characters
+            int length = charList.size();
+
+            //create a new array of that length
+            Character[] tempArray = new Character[length];
+
+            //get the Characters from the arraylist and pout them into the array
+            for (int i = 0; i < length; i++) {
+                tempArray[i] = charList.get(i);
+            }
+
+            //write the array to the file
+            obOut.writeObject(tempArray);
+            
+            //flush and close outputs
+            obOut.flush();
+            obOut.close();
+            fileOut.flush();
+            fileOut.close();
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("An error has occured.");
+            System.err.println("Exception:" + fnfe);
+        } catch (IOException ioe) {
+            System.out.println("An error has occured.");
+            System.err.println("Exception:" + ioe);
+        }
+
+        //exit the program because method only gets called when the X is clicked
+        System.exit(0);
+    }
+
+    /**
+     * Method used to load the database from a .dat file
+     */
+    public static void loadDatabase() {
+        try {
+            //set up input streams
+            FileInputStream fileIn = new FileInputStream("data.dat");
+            ObjectInputStream obIn = new ObjectInputStream(fileIn);
+
+            //read in an array of Characters
+            Character[] tempArray = (Character[]) obIn.readObject();
+
+            //add each Character in the array to the arraylist
+            for (int i = 0; i < tempArray.length; i++) {
+                addToCharList(tempArray[i], -1);
+            }
+
+            //close inputs
+            obIn.close();
+            fileIn.close();
+        } catch (IOException ioe) {
+            System.out.println("An error has occured.");
+            System.err.println("Exception:" + ioe);
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("An error has occured.");
+            System.err.println("Exception:" + cnfe);
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

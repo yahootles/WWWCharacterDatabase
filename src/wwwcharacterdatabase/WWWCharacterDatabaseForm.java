@@ -220,6 +220,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
 
     private void closingHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closingHandler
         saveDatabase();
+        evt.toString();
     }//GEN-LAST:event_closingHandler
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
@@ -261,7 +262,19 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     }//GEN-LAST:event_importButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        
+        if (charTable.getSelectedRow() > -1) {
+            JOptionPane optionPane = new JOptionPane("Are you sure you would like to delete this character?", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+            int choice = optionPane.showConfirmDialog(deleteButton, "Are you sure you would like to delete this character?");
+
+            if (choice == JOptionPane.YES_OPTION) {
+                int row = charTable.getSelectedRow();
+                
+                charTable.remove(row);
+                charTable.validate();
+                charTable.repaint();
+                charList.remove(row);
+            }
+        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
@@ -399,40 +412,42 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
      * Method that saves the database into a .dat file by serializing an array
      */
     public void saveDatabase() {
-        if (charTable.getSelectedRow() >= 0) {
+        if (charTable.getSelectedRow() >= 0 && !(charList.isEmpty())) {
             charList.get(charTable.getSelectedRow()).notes = notesTextArea.getText();
         }
 
-        try {
-            //set up outpu streams
-            FileOutputStream fileOut = new FileOutputStream("data.dat", false);
-            ObjectOutputStream obOut = new ObjectOutputStream(fileOut);
+        if (!charList.isEmpty()) {
+            try {
+                //set up outpu streams
+                FileOutputStream fileOut = new FileOutputStream("data.dat", false);
+                ObjectOutputStream obOut = new ObjectOutputStream(fileOut);
 
-            //get number of Characters
-            int length = charList.size();
+                //get number of Characters
+                int length = charList.size();
 
-            //create a new array of that length
-            Character[] tempArray = new Character[length];
+                //create a new array of that length
+                Character[] tempArray = new Character[length];
 
-            //get the Characters from the arraylist and pout them into the array
-            for (int i = 0; i < length; i++) {
-                tempArray[i] = charList.get(i);
+                //get the Characters from the arraylist and pout them into the array
+                for (int i = 0; i < length; i++) {
+                    tempArray[i] = charList.get(i);
+                }
+
+                //write the array to the file
+                obOut.writeObject(tempArray);
+
+                //flush and close outputs
+                obOut.flush();
+                obOut.close();
+                fileOut.flush();
+                fileOut.close();
+            } catch (FileNotFoundException fnfe) {
+                System.out.println("An error has occured.");
+                System.err.println("Exception:" + fnfe);
+            } catch (IOException ioe) {
+                System.out.println("An error has occured.");
+                System.err.println("Exception:" + ioe);
             }
-
-            //write the array to the file
-            obOut.writeObject(tempArray);
-
-            //flush and close outputs
-            obOut.flush();
-            obOut.close();
-            fileOut.flush();
-            fileOut.close();
-        } catch (FileNotFoundException fnfe) {
-            System.out.println("An error has occured.");
-            System.err.println("Exception:" + fnfe);
-        } catch (IOException ioe) {
-            System.out.println("An error has occured.");
-            System.err.println("Exception:" + ioe);
         }
 
         //exit the program because method only gets called when the X is clicked

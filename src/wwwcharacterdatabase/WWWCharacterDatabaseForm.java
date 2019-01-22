@@ -35,6 +35,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     JFileChooser fc = new JFileChooser();
     File f;
 
+    String tempNotes = "";
+
     public static ArrayList<Character> charList = new ArrayList<Character>();
 
     public WWWCharacterDatabaseForm() {
@@ -262,18 +264,28 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     }//GEN-LAST:event_importButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        if (charTable.getSelectedRow() > -1) {
-            JOptionPane optionPane = new JOptionPane("Are you sure you would like to delete this character?", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
-            int choice = optionPane.showConfirmDialog(deleteButton, "Are you sure you would like to delete this character?");
+        try {
+            if (charTable.getSelectedRow() > -1) {
+                JOptionPane optionPane = new JOptionPane("Are you sure you would like to delete this character?", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+                int choice = optionPane.showConfirmDialog(deleteButton, "Are you sure you would like to delete this character?");
 
-            if (choice == JOptionPane.YES_OPTION) {
-                int row = charTable.getSelectedRow();
-                
-                charTable.remove(row);
-                charTable.validate();
-                charTable.repaint();
-                charList.remove(row);
+                if (choice == JOptionPane.YES_OPTION) {
+                    prevSelected = -1;
+                    int row = charTable.getSelectedRow();
+
+                    //remove from the arraylist
+                    charList.remove(row);
+
+                    //remove from table. This throws a bunch of IndexOutOfBounds exceptions, but it's fine
+                    tModel.removeRow(row);
+ 
+                }
             }
+        } catch (IndexOutOfBoundsException ioobe) {
+            //clear notes, deselect anything from the table and refresh the table
+            notesTextArea.setText("");
+            charTable.clearSelection();
+            charTable.revalidate();       
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
@@ -292,10 +304,6 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             notesTextArea.setText(charList.get(curSelected).notes);
             prevSelected = curSelected;
         }
-    }
-
-    private void saveNotes() {
-
     }
 
     /**

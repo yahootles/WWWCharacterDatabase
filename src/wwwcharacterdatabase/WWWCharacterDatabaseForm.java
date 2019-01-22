@@ -263,14 +263,26 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_importButtonActionPerformed
 
+    /**
+     * Method that removes a Character
+     * @param evt - event from when the button gets clicked 
+     */
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         try {
+            //make sure the selected row is valid
             if (charTable.getSelectedRow() > -1) {
+                //verify that the user does wish to delete the Character
                 JOptionPane optionPane = new JOptionPane("Are you sure you would like to delete this character?", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
+                
+                //get their choice
                 int choice = optionPane.showConfirmDialog(deleteButton, "Are you sure you would like to delete this character?");
 
+                //only delete if the user says yes
                 if (choice == JOptionPane.YES_OPTION) {
+                    //just to make sure stuff doesn't go wrong
                     prevSelected = -1;
+                    
+                    //get selected row
                     int row = charTable.getSelectedRow();
 
                     //remove from the arraylist
@@ -285,7 +297,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             //clear notes, deselect anything from the table and refresh the table
             notesTextArea.setText("");
             charTable.clearSelection();
-            charTable.revalidate();       
+            charTable.revalidate();     
+            System.out.println("" + charList.size());
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
@@ -424,7 +437,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             charList.get(charTable.getSelectedRow()).notes = notesTextArea.getText();
         }
 
-        if (!charList.isEmpty()) {
+        if (charList.size()>=0) {
             try {
                 //set up outpu streams
                 FileOutputStream fileOut = new FileOutputStream("data.dat", false);

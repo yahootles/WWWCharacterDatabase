@@ -303,11 +303,10 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                 //create some readers to read the file
                 FileReader fileRead = new FileReader(f);
                 BufferedReader in = new BufferedReader(fileRead);
-                
+
                 //Character(String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, int dar, int m, int ch, int t)
-                
                 //getr Character's name, house, and stats from the file
-                String name = in.readLine().split(" ")[2];    
+                String name = in.readLine().split(" ")[2];
                 int health = Integer.parseInt(in.readLine().split(" ")[1]);
                 int aura = Integer.parseInt(in.readLine().split(" ")[1]);
                 String house = in.readLine().split(" ")[1];
@@ -322,24 +321,24 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                 int mu = Integer.parseInt(in.readLine().split(" ")[2]);
                 int charis = Integer.parseInt(in.readLine().split(" ")[1]);
                 int trans = Integer.parseInt(in.readLine().split(" ")[1]);
-                
+
                 //create a new Character and setthe notes to the house
                 Character tempChar = new Character(name, health, aura, reflex, dada, potions, herbology, ci, intel, stren, dark, mu, charis, trans);
                 tempChar.notes = house;
-                
+
                 //add the Character to the arraylist and the table
                 addToCharList(tempChar, -1);
-                
+
                 //clear warning label
                 importWarningLabel.setText("");
-                
+
                 //close the readers
                 in.close();
                 fileRead.close();
-            }catch(FileNotFoundException fnfe){
+            } catch (FileNotFoundException fnfe) {
                 //warn about no file found
                 importWarningLabel.setText("File not found.");
-            }catch (IOException ioe) {
+            } catch (IOException ioe) {
                 //warn about other problems with io
                 importWarningLabel.setText("Problem with file encountered.");
             }
@@ -392,10 +391,10 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
 
     private void sortButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortButtonActionPerformed
         int stat = sortComboBox.getSelectedIndex();
-        
-        if(stat == 0){
-            
-        }else{
+
+        if (stat == 0) {
+
+        } else {
             sortByStat(stat);
         }
     }//GEN-LAST:event_sortButtonActionPerformed
@@ -407,11 +406,11 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     private void selectionChanged() {
         int curSelected = charTable.getSelectedRow();
 
-        if (prevSelected >= 0) {
+        if (prevSelected >= 0 && curSelected >= 0) {
             charList.get(prevSelected).notes = notesTextArea.getText();
             notesTextArea.setText(charList.get(curSelected).notes);
             prevSelected = curSelected;
-        } else {
+        } else if(curSelected >= 0){
             notesTextArea.setText(charList.get(curSelected).notes);
             prevSelected = curSelected;
         }
@@ -526,42 +525,53 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             }
         }
     }
-    
-    public static void sortByName(){
-        
+
+    public static void sortByName() {
+
     }
-    
-    public void sortByStat(int stat){
+
+    public void sortByStat(int stat) {
         boolean sorted = false;
         Character temp;
-        
+        int length = charList.size();
+
         //charList.get(charTable.getSelectedRow()).notes = notesTextArea.getText();
         prevSelected = -1;
         charTable.clearSelection();
-        
+
+        try {
+            for (int i = 0; i < charTable.getRowCount(); i++) {
+                tModel.removeRow(i);
+                
+                charTable.revalidate();
+                System.out.println("tset1");
+            }
+        } catch (IndexOutOfBoundsException ioobe) {
+            System.out.println("yikers");
+            charTable.revalidate();
+        }
+        charTable.revalidate();
+
         //loop that runs unil sorted
-        while(sorted == false){
+        while (sorted == false) {
             sorted = true;
-            for(int i = 0; i < charList.size() - 1; i++){
+            for (int i = 0; i < length - 1; i++) {
                 //test to see if the smaller index contains a larger number
-                if(charList.get(i).getNumericalStat(stat) > charList.get(i+1).getNumericalStat(stat)){
+                if (charList.get(i).getNumericalStat(stat) > charList.get(i + 1).getNumericalStat(stat)) {
                     //switch places
                     temp = charList.get(i);
-                    charList.set(i, charList.get(i+1));
-                    charList.set(i+1,temp);
+                    charList.set(i, charList.get(i + 1));
+                    charList.set(i + 1, temp);                    
                     sorted = false;
                 }
             }
         }
-        
-        charTable.removeAll();
-        charTable.revalidate();
-        
-        for(int i = 0; i < charList.size(); i++){
+
+        for (int i = 0; i < charList.size(); i++) {
             addToTable(charList.get(i), -1);
         }
-        
-        charTable.revalidate();
+
+        //charTable.revalidate();
     }
 
     /**
@@ -639,8 +649,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         }
 
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;

@@ -78,6 +78,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        importWarningLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         importItem = new javax.swing.JMenuItem();
@@ -139,6 +140,9 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             }
         });
 
+        importWarningLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        importWarningLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -147,11 +151,14 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(importButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(importButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(importWarningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -171,7 +178,9 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                         .addComponent(notesLabel)
                         .addGap(32, 32, 32))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(importWarningLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(deleteButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -256,16 +265,65 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
+        //make a file chooser
         int num = fc.showOpenDialog(mainPanel);
 
+        //check if the user has clicked the open button
         if (num == fc.APPROVE_OPTION) {
+            //gget the file that has been selected
             f = fc.getSelectedFile();
+
+            try {
+                //create some readers to read the file
+                FileReader fileRead = new FileReader(f);
+                BufferedReader in = new BufferedReader(fileRead);
+                
+                //Character(String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, int dar, int m, int ch, int t)
+                
+                //getr Character's name, house, and stats from the file
+                String name = in.readLine().split(" ")[2];    
+                int health = Integer.parseInt(in.readLine().split(" ")[1]);
+                int aura = Integer.parseInt(in.readLine().split(" ")[1]);
+                String house = in.readLine().split(" ")[1];
+                int reflex = Integer.parseInt(in.readLine().split(" ")[1]);
+                int dada = Integer.parseInt(in.readLine().split(" ")[1]);
+                int potions = Integer.parseInt(in.readLine().split(" ")[1]);
+                int herbology = Integer.parseInt(in.readLine().split(" ")[1]);
+                int ci = Integer.parseInt(in.readLine().split(" ")[1]);
+                int intel = Integer.parseInt(in.readLine().split(" ")[1]);
+                int stren = Integer.parseInt(in.readLine().split(" ")[1]);
+                int dark = Integer.parseInt(in.readLine().split(" ")[1]);
+                int mu = Integer.parseInt(in.readLine().split(" ")[2]);
+                int charis = Integer.parseInt(in.readLine().split(" ")[1]);
+                int trans = Integer.parseInt(in.readLine().split(" ")[1]);
+                
+                //create a new Character and setthe notes to the house
+                Character tempChar = new Character(name, health, aura, reflex, dada, potions, herbology, ci, intel, stren, dark, mu, charis, trans);
+                tempChar.notes = house;
+                
+                //add the Character to the arraylist and the table
+                addToCharList(tempChar, -1);
+                
+                //clear warning label
+                importWarningLabel.setText("");
+                
+                //close the readers
+                in.close();
+                fileRead.close();
+            }catch(FileNotFoundException fnfe){
+                //warn about no file found
+                importWarningLabel.setText("File not found.");
+            }catch (IOException ioe) {
+                //warn about other problems with io
+                importWarningLabel.setText("Problem with file encountered.");
+            }
         }
     }//GEN-LAST:event_importButtonActionPerformed
 
     /**
      * Method that removes a Character
-     * @param evt - event from when the button gets clicked 
+     *
+     * @param evt - event from when the button gets clicked
      */
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         try {
@@ -273,7 +331,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             if (charTable.getSelectedRow() > -1) {
                 //verify that the user does wish to delete the Character
                 JOptionPane optionPane = new JOptionPane("Are you sure you would like to delete this character?", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
-                
+
                 //get their choice
                 int choice = optionPane.showConfirmDialog(deleteButton, "Are you sure you would like to delete this character?");
 
@@ -281,7 +339,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                 if (choice == JOptionPane.YES_OPTION) {
                     //just to make sure stuff doesn't go wrong
                     prevSelected = -1;
-                    
+
                     //get selected row
                     int row = charTable.getSelectedRow();
 
@@ -290,14 +348,14 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
 
                     //remove from table. This throws a bunch of IndexOutOfBounds exceptions, but it's fine
                     tModel.removeRow(row);
- 
+
                 }
             }
         } catch (IndexOutOfBoundsException ioobe) {
             //clear notes, deselect anything from the table and refresh the table
             notesTextArea.setText("");
             charTable.clearSelection();
-            charTable.revalidate();     
+            charTable.revalidate();
             System.out.println("" + charList.size());
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
@@ -437,7 +495,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             charList.get(charTable.getSelectedRow()).notes = notesTextArea.getText();
         }
 
-        if (charList.size()>=0) {
+        if (charList.size() >= 0) {
             try {
                 //set up outpu streams
                 FileOutputStream fileOut = new FileOutputStream("data.dat", false);
@@ -514,6 +572,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JButton importButton;
     private javax.swing.JMenuItem importItem;
+    private javax.swing.JLabel importWarningLabel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JLabel notesLabel;

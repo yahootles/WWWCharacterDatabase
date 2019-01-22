@@ -79,6 +79,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         importWarningLabel = new javax.swing.JLabel();
+        sortComboBox = new javax.swing.JComboBox();
+        sortButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         importItem = new javax.swing.JMenuItem();
@@ -143,6 +145,20 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         importWarningLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         importWarningLabel.setForeground(new java.awt.Color(255, 0, 0));
 
+        sortComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI", "Intelligence", "Strength", "Dark", "MU", "Charisma", "Transfiguration" }));
+        sortComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortComboBoxActionPerformed(evt);
+            }
+        });
+
+        sortButton.setText("Sort");
+        sortButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -155,10 +171,17 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(addButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(importButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                             .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(importWarningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(importWarningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addGap(148, 148, 148)
+                                .addComponent(sortComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(sortButton)))))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -186,7 +209,10 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sortComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sortButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,6 +386,20 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
+    private void sortComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sortComboBoxActionPerformed
+
+    private void sortButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortButtonActionPerformed
+        int stat = sortComboBox.getSelectedIndex();
+        
+        if(stat == 0){
+            
+        }else{
+            sortByStat(stat);
+        }
+    }//GEN-LAST:event_sortButtonActionPerformed
+
     /**
      * Method that gets called every time a new row is selected. It saves the
      * notes and displays the notes of the newly selected character
@@ -486,6 +526,43 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             }
         }
     }
+    
+    public static void sortByName(){
+        
+    }
+    
+    public void sortByStat(int stat){
+        boolean sorted = false;
+        Character temp;
+        
+        //charList.get(charTable.getSelectedRow()).notes = notesTextArea.getText();
+        prevSelected = -1;
+        charTable.clearSelection();
+        
+        //loop that runs unil sorted
+        while(sorted == false){
+            sorted = true;
+            for(int i = 0; i < charList.size() - 1; i++){
+                //test to see if the smaller index contains a larger number
+                if(charList.get(i).getNumericalStat(stat) > charList.get(i+1).getNumericalStat(stat)){
+                    //switch places
+                    temp = charList.get(i);
+                    charList.set(i, charList.get(i+1));
+                    charList.set(i+1,temp);
+                    sorted = false;
+                }
+            }
+        }
+        
+        charTable.removeAll();
+        charTable.revalidate();
+        
+        for(int i = 0; i < charList.size(); i++){
+            addToTable(charList.get(i), -1);
+        }
+        
+        charTable.revalidate();
+    }
 
     /**
      * Method that saves the database into a .dat file by serializing an array
@@ -562,6 +639,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         }
 
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
@@ -578,6 +657,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     private javax.swing.JLabel notesLabel;
     private javax.swing.JScrollPane notesPane;
     private javax.swing.JTextPane notesTextArea;
+    private javax.swing.JButton sortButton;
+    private javax.swing.JComboBox sortComboBox;
     private javax.swing.JScrollPane tablePane;
     // End of variables declaration//GEN-END:variables
 }

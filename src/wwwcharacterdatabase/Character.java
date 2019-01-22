@@ -103,4 +103,39 @@ public class Character implements java.io.Serializable{
     public void setTrans(int t) {
         trans = t;
     }
+    
+    public int getNumericalStat(int stat){
+    //String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, 
+    //int dar, int m, int ch, int t
+        switch(stat){
+            case 1:
+                return health;
+            case 2:
+                return aura;
+            case 3:
+                return reflex;
+            case 4:
+                return dada;
+            case 5:
+                return potions;
+            case 6:
+                return herb;
+            case 7:
+                return ci;
+            case 8:
+                return intel;
+            case 9:
+                return stren;
+            case 10:
+                return dark;
+            case 11:
+                return mu;
+            case 12:
+                return charis;
+            case 13:
+                return trans;
+            default:
+                return -1;
+        }
+    }
 }

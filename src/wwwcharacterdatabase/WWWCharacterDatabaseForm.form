@@ -81,11 +81,21 @@
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="addButton" alignment="0" max="32767" attributes="0"/>
                               <Component id="importButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="deleteButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="deleteButton" alignment="0" pref="127" max="32767" attributes="0"/>
                               <Component id="editButton" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="importWarningLabel" min="-2" pref="320" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="importWarningLabel" min="-2" pref="320" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                                  <Component id="sortComboBox" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="sortButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -122,7 +132,11 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="addButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="editButton" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="editButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -241,6 +255,39 @@
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="sortComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="14">
+                <StringItem index="0" value="Name"/>
+                <StringItem index="1" value="Health"/>
+                <StringItem index="2" value="Aura"/>
+                <StringItem index="3" value="Reflex"/>
+                <StringItem index="4" value="DADA"/>
+                <StringItem index="5" value="Potions"/>
+                <StringItem index="6" value="Herb"/>
+                <StringItem index="7" value="CI"/>
+                <StringItem index="8" value="Intelligence"/>
+                <StringItem index="9" value="Strength"/>
+                <StringItem index="10" value="Dark"/>
+                <StringItem index="11" value="MU"/>
+                <StringItem index="12" value="Charisma"/>
+                <StringItem index="13" value="Transfiguration"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sortComboBoxActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="sortButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sort"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sortButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -11,6 +11,7 @@ package wwwcharacterdatabase;
  */
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane.*;
 import javax.swing.JOptionPane;
@@ -393,7 +394,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         int stat = sortComboBox.getSelectedIndex();
 
         if (stat == 0) {
-
+            sortByName();
         } else {
             sortByStat(stat);
         }
@@ -410,7 +411,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             charList.get(prevSelected).notes = notesTextArea.getText();
             notesTextArea.setText(charList.get(curSelected).notes);
             prevSelected = curSelected;
-        } else if(curSelected >= 0){
+        } else if (curSelected >= 0) {
             notesTextArea.setText(charList.get(curSelected).notes);
             prevSelected = curSelected;
         }
@@ -526,52 +527,87 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         }
     }
 
-    public static void sortByName() {
+    public void sortByName() {
+        boolean sorted = false;
+        Character temp;
+        int length = charList.size();
 
+        if (charTable.getSelectedRow() >= 0) {
+            charList.get(charTable.getSelectedRow()).notes = notesTextArea.getText();
+        }
+        notesTextArea.setText("");
+
+        prevSelected = -1;
+        charTable.clearSelection();
+
+        //clear the table
+        try {
+            for (int i = 0; i < length; i++) {
+                tModel.removeRow(0);
+
+                charTable.revalidate();
+            }
+        } catch (IndexOutOfBoundsException ioobe) {
+            charTable.revalidate();
+        }
+
+        Collections.sort(charList);
+        
+        for(int i = 0; i < length; i ++){
+            addToTable(charList.get(i), -1);
+        }
     }
 
+    /**
+     * Method that sorts the table by one of the numerical stats from lowest to
+     * highest
+     *
+     * @param stat - integer that specifies which stat is being sorted by
+     */
     public void sortByStat(int stat) {
         boolean sorted = false;
         Character temp;
         int length = charList.size();
 
-        //charList.get(charTable.getSelectedRow()).notes = notesTextArea.getText();
+        if (charTable.getSelectedRow() >= 0) {
+            charList.get(charTable.getSelectedRow()).notes = notesTextArea.getText();
+        }
+        notesTextArea.setText("");
+
         prevSelected = -1;
         charTable.clearSelection();
 
+        //clear the table
         try {
-            for (int i = 0; i < charTable.getRowCount(); i++) {
-                tModel.removeRow(i);
-                
+            for (int i = 0; i < length; i++) {
+                tModel.removeRow(0);
+
                 charTable.revalidate();
-                System.out.println("tset1");
             }
         } catch (IndexOutOfBoundsException ioobe) {
-            System.out.println("yikers");
             charTable.revalidate();
         }
-        charTable.revalidate();
 
         //loop that runs unil sorted
         while (sorted == false) {
             sorted = true;
             for (int i = 0; i < length - 1; i++) {
-                //test to see if the smaller index contains a larger number
+                //test to see if the smaller index contains a character with a larger stat
                 if (charList.get(i).getNumericalStat(stat) > charList.get(i + 1).getNumericalStat(stat)) {
                     //switch places
                     temp = charList.get(i);
                     charList.set(i, charList.get(i + 1));
-                    charList.set(i + 1, temp);                    
+                    charList.set(i + 1, temp);
                     sorted = false;
                 }
             }
         }
 
+        //add all the charcter to the table
         for (int i = 0; i < charList.size(); i++) {
             addToTable(charList.get(i), -1);
         }
 
-        //charTable.revalidate();
     }
 
     /**

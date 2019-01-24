@@ -11,7 +11,7 @@ package wwwcharacterdatabase;
  */
 //"Name", "Health", "Aura", "Reflex", "DADA", "Potions", "Herb", "CI","Int", "Strength", 
 //"Darkness", "MU", "Charisma", "Trans"
-public class Character implements java.io.Serializable, Comparable<Character>{
+public class Character implements java.io.Serializable{
 
     //variables
     String name;
@@ -139,10 +139,6 @@ public class Character implements java.io.Serializable, Comparable<Character>{
         }
     }
 
-    @Override
-    public int compareTo(Character c) {
-        return(this.name.compareToIgnoreCase(c.name));
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
 }

@@ -405,8 +405,8 @@ public class addCharacterForm extends javax.swing.JFrame {
             //disposes of this window
             this.dispose();
         }catch(NumberFormatException nfe){
-            System.err.println("Exception:" + nfe);
-            errorLabel.setText("Invalid input. Something is not a number.");
+            //System.err.println("Exception:" + nfe);
+            errorLabel.setText("Invalid input.");
         }
         
         

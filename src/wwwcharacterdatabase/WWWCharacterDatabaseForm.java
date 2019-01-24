@@ -47,6 +47,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         TableColumnModel tcm = charTable.getColumnModel();
         tcm.getColumn(0).setPreferredWidth(180);
 
+        //listener for selection changes
         charTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -54,6 +55,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             }
         });
 
+        //load database
         loadDatabase();
 
         //set the filter
@@ -82,6 +84,8 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         importWarningLabel = new javax.swing.JLabel();
         sortComboBox = new javax.swing.JComboBox();
         sortButton = new javax.swing.JButton();
+        deleteWarningLabel = new javax.swing.JLabel();
+        editWarningLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         importItem = new javax.swing.JMenuItem();
@@ -160,6 +164,10 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             }
         });
 
+        deleteWarningLabel.setForeground(new java.awt.Color(255, 0, 0));
+
+        editWarningLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -174,15 +182,16 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                             .addComponent(importButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                             .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(importWarningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGap(148, 148, 148)
+                                .addComponent(editWarningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(sortComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(sortButton)))))
+                                .addComponent(sortButton))
+                            .addComponent(importWarningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteWarningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -206,14 +215,17 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                             .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(importWarningLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(deleteButton)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deleteButton)
+                            .addComponent(deleteWarningLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sortComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sortButton))
+                            .addComponent(sortButton)
+                            .addComponent(editWarningLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,38 +264,54 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * when file>import is clicked, it trigers a click on the import button
+     * @param evt event 
+     */
     private void importItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importItemActionPerformed
         importButton.doClick(0);
     }//GEN-LAST:event_importItemActionPerformed
 
+    /**
+     * Method that calls the save database method when the program is closing
+     * @param evt window closing event 
+     */
     private void closingHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closingHandler
         saveDatabase();
-        evt.toString();
     }//GEN-LAST:event_closingHandler
 
+    /**
+     * Method that opens a window to edit a character. It opens the add character window that has been modified to say edit and has the character stats in each corresponding box
+     * @param evt button clicked event
+     */
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         //(int state, String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, int dar, int m, int ch, int t)
-        int row = charTable.getSelectedRow();
-        System.out.println(String.valueOf(row));
-        Character tempChar = charList.get(row);
-        System.out.println(tempChar.toString() + row);
-        //System.out.println("yay");
-        String n = tempChar.name;
-        int heal = tempChar.health;
-        //System.out.println(n);
-        int a = tempChar.aura;
-        int r = tempChar.reflex;
-        int d = tempChar.dada;
-        int p = tempChar.potions;
-        int h = tempChar.herb;
-        int c = tempChar.ci;
-        int i = tempChar.intel;
-        int s = tempChar.stren;
-        int dar = tempChar.dark;
-        int m = tempChar.mu;
-        int ch = tempChar.charis;
-        int t = tempChar.trans;
-        new addCharacterForm(1, row, n, heal, a, r, d, p, h, c, i, s, dar, m, ch, t).setVisible(true);
+        if (charTable.getSelectedRow() >= 0) {
+            editWarningLabel.setText("");
+            int row = charTable.getSelectedRow();
+            //System.out.println(String.valueOf(row));
+            Character tempChar = charList.get(row);
+            //System.out.println(tempChar.toString() + row);
+            //System.out.println("yay");
+            String n = tempChar.name;
+            int heal = tempChar.health;
+            //System.out.println(n);
+            int a = tempChar.aura;
+            int r = tempChar.reflex;
+            int d = tempChar.dada;
+            int p = tempChar.potions;
+            int h = tempChar.herb;
+            int c = tempChar.ci;
+            int i = tempChar.intel;
+            int s = tempChar.stren;
+            int dar = tempChar.dark;
+            int m = tempChar.mu;
+            int ch = tempChar.charis;
+            int t = tempChar.trans;
+            new addCharacterForm(1, row, n, heal, a, r, d, p, h, c, i, s, dar, m, ch, t).setVisible(true);
+        }else{
+            editWarningLabel.setText("No character selected.");
+        }
         //System.out.println("yay2");
     }//GEN-LAST:event_editButtonActionPerformed
 
@@ -291,6 +319,10 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         new addCharacterForm(0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0).setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
 
+    /**
+     * Method that imports a character from a file by reading lines, splitting and parsing text
+     * @param evt button clicked event
+     */
     private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
         //make a file chooser
         int num = fc.showOpenDialog(mainPanel);
@@ -355,6 +387,9 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         try {
             //make sure the selected row is valid
             if (charTable.getSelectedRow() > -1) {
+                //clear warning
+                deleteWarningLabel.setText("");
+
                 //verify that the user does wish to delete the Character
                 JOptionPane optionPane = new JOptionPane("Are you sure you would like to delete this character?", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION);
 
@@ -376,13 +411,15 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
                     tModel.removeRow(row);
 
                 }
+            } else {
+                deleteWarningLabel.setText("No character selected to be deleted.");
             }
         } catch (IndexOutOfBoundsException ioobe) {
             //clear notes, deselect anything from the table and refresh the table
             notesTextArea.setText("");
             charTable.clearSelection();
             charTable.revalidate();
-            System.out.println("" + charList.size());
+            //System.out.println("" + charList.size());
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
@@ -390,6 +427,10 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_sortComboBoxActionPerformed
 
+    /**
+     * Method that sorts table by calling a different method
+     * @param evt button clicked event 
+     */
     private void sortButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortButtonActionPerformed
         int stat = sortComboBox.getSelectedIndex();
 
@@ -527,6 +568,9 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * method that sorts by name using a bubble sort and string.compareToIgnoreCase
+     */
     public void sortByName() {
         boolean sorted = false;
         Character temp;
@@ -551,11 +595,28 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
             charTable.revalidate();
         }
 
-        Collections.sort(charList);
+        //bubble sort
+        while (sorted == false) {
+            sorted = true;
+            for (int i = 0; i < length - 1; i++) {
+                //test to see if the smaller index contains should be before the larger index
+                if (charList.get(i).name.compareToIgnoreCase(charList.get(i+1).name) > 0) {
+                    //switch places
+                    temp = charList.get(i);
+                    charList.set(i, charList.get(i + 1));
+                    charList.set(i + 1, temp);
+                    sorted = false;
+                }
+            }
+        }
         
-        for(int i = 0; i < length; i ++){
+
+        //add all the charcter to the table
+        for (int i = 0; i < charList.size(); i++) {
             addToTable(charList.get(i), -1);
         }
+
+        
     }
 
     /**
@@ -691,8 +752,10 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private javax.swing.JTable charTable;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel deleteWarningLabel;
     private javax.swing.JButton editButton;
     private javax.swing.JMenu editMenu;
+    private javax.swing.JLabel editWarningLabel;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JButton importButton;
     private javax.swing.JMenuItem importItem;

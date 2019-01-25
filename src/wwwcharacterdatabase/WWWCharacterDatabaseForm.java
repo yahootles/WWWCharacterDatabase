@@ -38,6 +38,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
 
     String tempNotes = "";
 
+    //arraylist for storing Character
     public static ArrayList<Character> charList = new ArrayList<Character>();
 
     public WWWCharacterDatabaseForm() {
@@ -315,6 +316,10 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         //System.out.println("yay2");
     }//GEN-LAST:event_editButtonActionPerformed
 
+    /**
+     * Creates a new addCharacterForm when add button is clicked
+     * @param evt button clicked event
+     */
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         new addCharacterForm(0, 0, "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0).setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
@@ -494,12 +499,7 @@ public class WWWCharacterDatabaseForm extends javax.swing.JFrame {
         });
     }
 
-    /**
-     * Method that adds a Character to an ArrayList and class the method to add
-     * it to the table
-     *
-     * @param charac - Character being added to he ArrayList
-     */
+
     /**
      * Method that adds Characters to the list or replaces an already added
      * Character's values

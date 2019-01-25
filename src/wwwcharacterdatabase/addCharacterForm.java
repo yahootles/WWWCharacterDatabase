@@ -377,10 +377,18 @@ public class addCharacterForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ciFieldActionPerformed
 
+    /**
+     * Method that disposes of form when cancel button clicked
+     * @param evt button clicked event
+     */
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    /**
+     * Method that creates a new character based on the values in the boxes
+     * @param evt button clicked event
+     */
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         try{
             //get all the values frm the text fields
@@ -414,6 +422,10 @@ public class addCharacterForm extends javax.swing.JFrame {
         //WWWCharacterDatabaseForm.charList.add(new Character());
     }//GEN-LAST:event_addButtonActionPerformed
 
+    /**
+     * Method that edits a character based on the values in the boxes
+     * @param evt button clicked event
+     */
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         try{
             //get all the values frm the text fields
@@ -443,6 +455,10 @@ public class addCharacterForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editButtonActionPerformed
 
+    /**
+     * same as cancelButtonActionPerformed
+     * @param evt 
+     */
     private void cancelButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelButton2ActionPerformed

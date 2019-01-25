@@ -48,6 +48,7 @@ public class Character implements java.io.Serializable{
         notes = "";
     }
 
+    
     public void setName(String n) {
         name = n;
     }
@@ -104,6 +105,11 @@ public class Character implements java.io.Serializable{
         trans = t;
     }
     
+    /**
+     * Method used to get a stat based on a numerical value
+     * @param stat Which stat is wanted
+     * @return value of the stat wanted 
+     */
     public int getNumericalStat(int stat){
     //String n, int heal, int a, int r, int d, int p, int h, int c, int i, int s, 
     //int dar, int m, int ch, int t

@@ -24,7 +24,7 @@ public class CustomTableModel extends DefaultTableModel {
     @Override
     
     /**
-     * 
+     * Method that always says that cells in the table are uneditable
      */
     public boolean isCellEditable(int row, int col){
         return false;
